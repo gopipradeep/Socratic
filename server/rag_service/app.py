@@ -33,18 +33,18 @@ config.setup_logging()
 
 # --- Import configurations and services ---
 try:
-# from vector_db_service import VectorDBService
-    # import ai_core
-    # import neo4j_handler
-    # from neo4j import exceptions as neo4j_exceptions
-# from tts_service import initialize_tts
-    # import document_generator
-    # import podcast_generator
+    from vector_db_service import VectorDBService
+    import ai_core
+    import neo4j_handler
+    from neo4j import exceptions as neo4j_exceptions
+    from tts_service import initialize_tts
+    import document_generator
+    import podcast_generator
     import google.generativeai as genai
     from prompts import CODE_ANALYSIS_PROMPT_TEMPLATE, TEST_CASE_GENERATION_PROMPT_TEMPLATE, EXPLAIN_ERROR_PROMPT_TEMPLATE, QUIZ_GENERATION_PROMPT_TEMPLATE
-    # import quiz_utils
-    # from academic_search import search_all_apis as academic_search
-    # from integrity_services import submit_to_turnitin, get_turnitin_report, check_bias_hybrid, calculate_readability
+    import quiz_utils
+    from academic_search import search_all_apis as academic_search
+    from integrity_services import submit_to_turnitin, get_turnitin_report, check_bias_hybrid, calculate_readability
     import asyncio # <<< THIS IS THE FIX (Step 1)
 
     if config.GEMINI_API_KEY:
@@ -137,18 +137,18 @@ app.config['GENERATED_DOCS_DIR'] = GENERATED_DOCS_DIR
 
 # Initialize services
 vector_service = None
-# try:
-#     vector_service = VectorDBService()
-#     vector_service.setup_collection()
-#     app.vector_service = vector_service
-# except Exception as e:
-#     logger.critical(f"Failed to initialize VectorDBService: {e}", exc_info=True)
+try:
+    vector_service = VectorDBService()
+    vector_service.setup_collection()
+    app.vector_service = vector_service
+except Exception as e:
+    logger.critical(f"Failed to initialize VectorDBService: {e}", exc_info=True)
 
-# try:
-#     neo4j_handler.init_driver()
-# except Exception as e:
-#     logger.critical(f"Neo4j driver failed to initialize: {e}.")
-# atexit.register(lambda: None) # Dummy register
+try:
+    neo4j_handler.init_driver()
+except Exception as e:
+    logger.critical(f"Neo4j driver failed to initialize: {e}.")
+atexit.register(lambda: None) # Dummy register
 
 # initialize_tts()
 

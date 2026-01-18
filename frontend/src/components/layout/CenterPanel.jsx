@@ -415,7 +415,7 @@ function CenterPanel({ messages, setMessages, currentSessionId, onChatProcessing
                                         className={`group relative text-left bg-surface-light dark:bg-surface-dark/50 border border-border-light dark:border-border-dark rounded-lg p-4 transition-all duration-300 ease-in-out hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed ${glowStyles[feature.glowColor]}`}
                                     >
                                         <div className="relative">
-                                            {feature.title === 'Academic Integrity & Analysis' && (
+                                            {feature.title === 'Socratic Tutor' && (
                                                 <div className="fire-tag-animation absolute -top-4 -right-3 flex items-center gap-1 bg-gradient-to-br from-red-500 to-orange-400 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-lg">
                                                     <Flame size={10} />
                                                     HOT
